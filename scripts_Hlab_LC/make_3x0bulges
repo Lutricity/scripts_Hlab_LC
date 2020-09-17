@@ -1,0 +1,126 @@
+# This program is meant to:
+#   1) generate all possible 3x0 bulges
+#   2) then place those in
+#       a) TAR's surrounding helix
+#       b) all neighboring base pairs
+
+import pandas as pd
+import csv
+
+nts_RNA = "A", "C", "G", "U"
+b_base = "XXX"
+b_base1 = "CXX"
+b_base2 = "AXX"
+b_base3 = "UXX"
+b_base4 = "GXX"
+
+bulges = (b_base1, b_base2, b_base3, b_base4)
+
+
+all_bulges = []
+
+for i in bulges:
+    for j in nts_RNA:
+        for l in nts_RNA:
+            i =  i[0] + j + l
+            all_bulges.append(i)
+TAR_paired_bulges = []
+
+for q in all_bulges:
+    k = "CCGA" + q + "GAGC+GCUCUCGG"
+    TAR_paired_bulges.append(k)
+#print("These are TAR bulge mutants:", TAR_paired_bulges)
+print("This is how many TAR paired mutants are present.", len(TAR_paired_bulges))
+
+lb_base1 = "CXXXY"
+lb_base2 = "AXXXY"
+lb_base3 = "UXXXY"
+lb_base4 = "GXXXY"
+lbulges = (b_base1, b_base2, b_base3, b_base4)
+
+long_bulges = []
+
+for i in lbulges:
+    for j in nts_RNA:
+        for l in nts_RNA:
+            for m in nts_RNA:
+                for n in nts_RNA:
+                    i = j + i[0] + l + m + n
+                    long_bulges.append(i)
+
+paired_bulges = []
+
+for p in long_bulges:
+    if p[0] == "G" and p[4] == "C":
+        j = p + "+GC"
+        paired_bulges.append(j)
+    elif p[0] == "G" and p[4] == "G":
+        j = p + "+CC"
+        paired_bulges.append(j)
+    elif p[0] == "G" and p[4] == "U":
+        j = p + "+AC"
+        paired_bulges.append(j)
+    elif p[0] == "G" and p[4] == "A":
+        j = p + "+UC"
+        paired_bulges.append(j)
+    elif p[0] == "C" and p[4] == "A":
+        j = p + "+UG"
+        paired_bulges.append(j)
+    elif p[0] == "C" and p[4] == "U":
+        j = p + "+AG"
+        paired_bulges.append(j)
+    elif p[0] == "C" and p[4] == "G":
+        j = p + "+CG"
+        paired_bulges.append(j)
+    elif p[0] == "C" and p[4] == "C":
+        j = p + "+GG"
+        paired_bulges.append(j)
+    elif p[0] == "A" and p[4] == "A":
+        j = p + "+UU"
+        paired_bulges.append(j)
+    elif p[0] == "A" and p[4] == "U":
+        j = p + "+AU"
+        paired_bulges.append(j)
+    elif p[0] == "A" and p[4] == "G":
+        j = p + "+CU"
+        paired_bulges.append(j)
+    elif p[0] == "A" and p[4] == "C":
+        j = p + "+GU"
+        paired_bulges.append(j)
+    elif p[0] == "U" and p[4] == "A":
+        j = p + "+UU"
+        paired_bulges.append(j)
+    elif p[0] == "U" and p[4] == "U":
+        j = p + "+AA"
+        paired_bulges.append(j)
+    elif p[0] == "U" and p[4] == "G":
+        j = p + "+CA"
+        paired_bulges.append(j)
+    elif p[0] == "U" and p[4] == "C":
+        j = p + "+GA"
+        paired_bulges.append(j)
+    else:
+        pass
+
+long_paired_bulges = []
+print(paired_bulges)
+print(paired_bulges[0][6:8])
+for u in paired_bulges:
+    long_paired_bulges.append("CC"+u[0:5]+"C+G"+u[6:8]+"GG")
+
+
+print(len(paired_bulges))
+
+d1 = pd.DataFrame(long_paired_bulges)
+d2 = pd.DataFrame(TAR_paired_bulges)
+
+d1.to_csv('all_3x0_bulges')
+d2.to_csv('TAR_3x0_bulges')
+
+#with open("TAR_3x0_bulges", 'w', newline='') as myfile:
+     #wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+     #wr.writerow(TAR_paired_bulges)
+
+#with open("all_3x0_bulges", 'w', newline='') as myfile:
+ #    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+  #   wr.writerow(paired_bulges)
