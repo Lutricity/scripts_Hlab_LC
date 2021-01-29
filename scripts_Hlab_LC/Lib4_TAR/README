@@ -1,0 +1,11 @@
+checking % seqs of tecto constructs has sublibs: "first_expers_TL_TLR.csv"
+(all TLR/TL constructs)
+SL1_TAR
+SL2_TAR_muts
+SL4_full_TAR_muts
+SL5_reversed_tecto_and_'normal'_tectos
+SL5_Steve_evolut_muts_TL/TLR
+SL6_tectos_neg controls
+
+checking all lib constructs:
+"counts_per_lib_seq.csv" input file; is a csv dict with every lib ref seq and the number of counts of this in the .unq file from compressBarcodes_v8.py 

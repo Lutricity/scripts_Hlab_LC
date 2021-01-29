@@ -1,0 +1,11 @@
+##Ignore large files
+*.CPseq
+*.csv
+*.xlsx
+*.pptx
+*.pdf
+
+#Ignore hidden bash files
+.*.sh
+backup*
+../backup*

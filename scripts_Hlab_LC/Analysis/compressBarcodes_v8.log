@@ -1,0 +1,24 @@
+Analysis performed 2021-01-18 12:17:57.292694 using compressBarcodes_v8.py
+Barcodes compressed from file: /home/groups/herschla/lmcuevas/BarcodeToolsLC/barcode_tools/libPrep4_JDY7H_JF95K.sort.filter.CPseq
+Average sequence quality score cutoff used: 28
+
+Compressed barcodes in output file /home/groups/herschla/lmcuevas/BarcodeToolsLC/barcode_tools/libPrep4_JDY7H_JF95K.sort.filter_compressedBarcodes.unq
+Columns:
+  (1) consensus sequence
+  (2) barcode
+  (3) number of sequences with barcode
+  (4) voting results (fraction sequences that perfectly match consensus)
+  (5) 1 if sequences are all same length, 2 of sequences are not,
+  (6) mode target sequence length
+  (7) mean barcode quality score
+number of clusters per barcode in /home/groups/herschla/lmcuevas/BarcodeToolsLC/barcode_tools/libPrep4_JDY7H_JF95K.sort.filter_compressedBarcodes.stat
+
+Total number of sequences analyzed: 8114855 (100%)
+Number of sequences passing filter: 8074082 (99.5%)
+Number of low quality sequences: 40773 (0.5%)
+
+Total number of barcodes: 406816 (100%)
+
+Number of unique sequence with same sequences within a barcode block: 251724 (61.88%)
+Number of unique sequences with different sequences of all the same length within a barcode block: 155092 (38.12%)
+Number of unique sequences with different sequences of different length: 0 (0.0%)
